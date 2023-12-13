@@ -1,46 +1,20 @@
-import {createStore, deleteStore, getStore, getStores, updateStore} from "./storeServiceImpl.mjs";
-import { getProduct, createProduct, deleteProduct, updateProduct, getProducts} from "./productServiceImpl.mjs";
+import {createStore, deleteStore, getStore, getStores, updateStore} from "./serviceImpl/storeServiceImpl.mjs";
+import { getProduct, createProduct, deleteProduct, updateProduct, getProducts} from "./serviceImpl/productServiceImpl.mjs";
+import {storeService, productService} from "./proto/definition/protoDefinitions.mjs";
 
 import grpc from '@grpc/grpc-js';
-import protoLoader from '@grpc/proto-loader';
-
-const PROTO_PRODUCT_PATH = './product.proto';
-const PROTO_STORE_PATH = './store.proto';
-
-//TODO move this to a separate file and also import it in client implementations!!!
-const productPackageDefinition = protoLoader.loadSync(PROTO_PRODUCT_PATH, {
-    keepCase: true,
-    longs: String,
-    enums: String,
-    defaults: true,
-    oneofs: true
-})
-
-const productProtoDescriptor = grpc.loadPackageDefinition(productPackageDefinition);
-const product = productProtoDescriptor.ProductService;
-
-const storePackageDefinition = protoLoader.loadSync(PROTO_STORE_PATH, {
-    keepCase: true,
-    longs: String,
-    enums: String,
-    defaults: true,
-    oneofs: true
-})
-
-const storeProtoDescriptor = grpc.loadPackageDefinition(storePackageDefinition);
-const store = storeProtoDescriptor.StoreService;
 
 
 function getServer() {
     const server = new grpc.Server();
-    server.addService(product.service, {
+    server.addService(productService.service, {
         GetProduct: getProduct,
         CreateProduct: createProduct,
         GetProducts: getProducts,
         DeleteProduct: deleteProduct,
         UpdateProduct: updateProduct,
     });
-    server.addService(store.service, {
+    server.addService(storeService.service, {
             GetStore: getStore,
             CreateStore: createStore,
             GetStores: getStores,

@@ -1,6 +1,5 @@
 import grpc from '@grpc/grpc-js';
-import {productService} from "./productClientImpl.mjs";
-import {storeService} from "./storeClientImpl.mjs";
+import {storeService, productService} from "./proto/definition/protoDefinitions.mjs";
 
 function run() {
     try{
