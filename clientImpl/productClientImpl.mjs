@@ -1,4 +1,4 @@
-//tested
+
 function createProduct(client, product) {
     client.CreateProduct(product, (error, result) => {
         if(error) {
@@ -8,7 +8,7 @@ function createProduct(client, product) {
         console.log(result);
     })
 }
-//tested
+
 function getProduct (client, id) {
     client.GetProduct({id: id}, (error, result) => {
         if(error) {
@@ -18,7 +18,7 @@ function getProduct (client, id) {
         console.log(result);
     })
 }
-//tested
+
 function getProducts (client) {
     const stream = client.GetProducts()
     stream.on("data", (chunk) => {
@@ -29,7 +29,7 @@ function getProducts (client) {
     })
 }
 
-//tested
+
 function deleteProduct(client, id) {
     client.DeleteProduct({id: id}, (error, result) => {
         if(error) {
@@ -56,5 +56,4 @@ export {
     getProducts,
     deleteProduct,
     updateProduct,
-    productService
 }

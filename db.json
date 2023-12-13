@@ -1,11 +1,22 @@
 {
-  "stores": [],
+  "stores": [
+    {
+      "name": "test",
+      "homePage": "https://www.mimovrste.si",
+      "id": "a1ebf082-5b5e-4f4c-80f2-c85108b39f70"
+    },
+    {
+      "name": "test",
+      "homePage": "https://www.mimovrste.si",
+      "id": "c153fcbc-09f1-4ba8-bace-b5fb4d808003"
+    }
+  ],
   "products": [
     {
       "name": "first",
       "category": "first",
       "price": "3.13",
-      "storeId": 1,
+      "storeId": "a1ebf082-5b5e-4f4c-80f2-c85108b39f70",
       "id": "39ceaa82-95e8-4215-b4d4-23d0d80761a1"
     },
     {
@@ -13,13 +24,13 @@
       "name": "test-u",
       "category": "test",
       "price": 1,
-      "storeId": 0
+      "storeId": "a1ebf082-5b5e-4f4c-80f2-c85108b39f70"
     },
     {
       "name": "test",
       "category": "test",
       "price": "1",
-      "storeId": 0,
+      "storeId": "a1ebf082-5b5e-4f4c-80f2-c85108b39f70",
       "id": "3eb5b1e9-dad5-4e60-bce4-61fb428a2ef4"
     }
   ]

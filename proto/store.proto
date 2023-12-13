@@ -15,9 +15,7 @@ message RequestById {
 }
 message CreateStoreRequest {
   string name = 1;
-  string category = 2;
-  string price = 3;
-  int32 storeId = 4;
+  string homePage = 2;
 }
 message CreatedId {
   string id = 1;
@@ -25,7 +23,5 @@ message CreatedId {
 message Store {
   string id = 1;
   string name = 2;
-  string category = 3;
-  float price = 5;
-  int32 storeId = 6;
+  string homePage = 3;
 }

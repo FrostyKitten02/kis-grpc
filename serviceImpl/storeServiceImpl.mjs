@@ -29,7 +29,7 @@ const createStore = async (req, res) => {
     await db.write()
     res({
         code: grpc.status.OK,
-        details: "OK"
+        details: "OK",
     }, {id:newStore.id})
 }
 
