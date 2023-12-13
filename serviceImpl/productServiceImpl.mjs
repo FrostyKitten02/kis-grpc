@@ -1,9 +1,6 @@
-import { JSONPreset } from 'lowdb/node'
 import { v4 as uuid } from 'uuid';
 import grpc from '@grpc/grpc-js';
-
-const defaultData = { products: [], stores: [] }
-const db = await JSONPreset('db.json', defaultData)
+import db from "./database.mjs";
 
 const getProduct = async (req, res) => {
     const product = db.data.products.find(p=>p.id === req.request.id)
