@@ -1,0 +1,28 @@
+{
+  "name": "kis-grpc",
+  "version": "1.0.0",
+  "description": "",
+  "type" : "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FrostyKitten02/kis-grpc.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FrostyKitten02/kis-grpc/issues"
+  },
+  "tpye": "module",
+  "homepage": "https://github.com/FrostyKitten02/kis-grpc#readme",
+  "dependencies": {
+    "@grpc/grpc-js": "^1.9.13",
+    "@grpc/proto-loader": "^0.7.10",
+    "lowdb": "^6.1.1",
+    "uuid": "^9.0.1"
+  }
+}

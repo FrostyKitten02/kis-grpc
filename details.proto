@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+service ProductService {
+  rpc GetProduct(RequestById) returns (Product) {};
+  rpc CreateProduct(CreateProductRequest) returns (CreatedId) {};
+  rpc GetProducts (google.protobuf.Empty) returns (stream Product) {};
+  rpc DeleteProduct(RequestById) returns (google.protobuf.Empty) {};
+  rpc UpdateProduct (Product) returns (google.protobuf.Empty) {};
+}
+
+message RequestById {
+  string id = 1;
+}
+message CreateProductRequest {
+  string name = 1;
+  string category = 2;
+  string price = 3;
+  int32 storeId = 4;
+}
+message CreatedId {
+  string id = 1;
+}
+message Product {
+  string id = 1;
+  string name = 2;
+  string category = 3;
+  float price = 5;
+  int32 storeId = 6;
+}

@@ -1,0 +1,26 @@
+{
+  "stores": [],
+  "products": [
+    {
+      "name": "first",
+      "category": "first",
+      "price": "3.13",
+      "storeId": 1,
+      "id": "39ceaa82-95e8-4215-b4d4-23d0d80761a1"
+    },
+    {
+      "id": "72eb2fbc-120f-4afd-a97a-3f44b5028acd",
+      "name": "test-u",
+      "category": "test",
+      "price": 1,
+      "storeId": 0
+    },
+    {
+      "name": "test",
+      "category": "test",
+      "price": "1",
+      "storeId": 0,
+      "id": "3eb5b1e9-dad5-4e60-bce4-61fb428a2ef4"
+    }
+  ]
+}
