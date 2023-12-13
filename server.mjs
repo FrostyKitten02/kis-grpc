@@ -1,11 +1,14 @@
-const PROTO_PATH = './details.proto';
+import {createStore, deleteStore, getStore, getStores, updateStore} from "./storeServiceImpl.mjs";
+import { getProduct, createProduct, deleteProduct, updateProduct, getProducts} from "./productServiceImpl.mjs";
+
 import grpc from '@grpc/grpc-js';
 import protoLoader from '@grpc/proto-loader';
-import {
-    getProduct, createProduct, deleteProduct, updateProduct, getProducts,
-} from "./serviceImpl.mjs";
 
-const packageDefinition = protoLoader.loadSync(PROTO_PATH, {
+const PROTO_PRODUCT_PATH = './product.proto';
+const PROTO_STORE_PATH = './store.proto';
+
+//TODO move this to a separate file and also import it in client implementations!!!
+const productPackageDefinition = protoLoader.loadSync(PROTO_PRODUCT_PATH, {
     keepCase: true,
     longs: String,
     enums: String,
@@ -13,24 +16,40 @@ const packageDefinition = protoLoader.loadSync(PROTO_PATH, {
     oneofs: true
 })
 
-const protoDescriptor = grpc.loadPackageDefinition(packageDefinition);
-const product = protoDescriptor.ProductService;
+const productProtoDescriptor = grpc.loadPackageDefinition(productPackageDefinition);
+const product = productProtoDescriptor.ProductService;
+
+const storePackageDefinition = protoLoader.loadSync(PROTO_STORE_PATH, {
+    keepCase: true,
+    longs: String,
+    enums: String,
+    defaults: true,
+    oneofs: true
+})
+
+const storeProtoDescriptor = grpc.loadPackageDefinition(storePackageDefinition);
+const store = storeProtoDescriptor.StoreService;
+
 
 function getServer() {
     const server = new grpc.Server();
     server.addService(product.service, {
-        TestConnection: (req, res) => {
-            console.log(req.request);
-            res(null, {
-                message: "Connection is working!"
-            });
-        },
         GetProduct: getProduct,
         CreateProduct: createProduct,
         GetProducts: getProducts,
         DeleteProduct: deleteProduct,
         UpdateProduct: updateProduct,
     });
+    server.addService(store.service, {
+            GetStore: getStore,
+            CreateStore: createStore,
+            GetStores: getStores,
+            DeleteStore: deleteStore,
+            UpdateStore: updateStore,
+        }
+    )
+
+
     return server;
 }
 

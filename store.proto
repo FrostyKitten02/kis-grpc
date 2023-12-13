@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+service StoreService {
+  rpc GetStore(RequestById) returns (Store) {};
+  rpc CreateStore(CreateStoreRequest) returns (CreatedId) {};
+  rpc GetStores (google.protobuf.Empty) returns (stream Store) {};
+  rpc DeleteStore(RequestById) returns (google.protobuf.Empty) {};
+  rpc UpdateStore (Store) returns (google.protobuf.Empty) {};
+}
+
+message RequestById {
+  string id = 1;
+}
+message CreateStoreRequest {
+  string name = 1;
+  string category = 2;
+  string price = 3;
+  int32 storeId = 4;
+}
+message CreatedId {
+  string id = 1;
+}
+message Store {
+  string id = 1;
+  string name = 2;
+  string category = 3;
+  float price = 5;
+  int32 storeId = 6;
+}
